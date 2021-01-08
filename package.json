@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "name": "ecsscape-room",
+  "version": "0.0.0",
+  "description": "A collection of puzzles that do not use javascript.",
+  "main": "dist/client/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Fong"
+}

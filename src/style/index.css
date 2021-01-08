@@ -1,0 +1,32 @@
+
+/*
+puzzle
+...
+ */
+
+input[tabIndex^="-"] {
+	pointer-events: none;
+}
+
+.puzzles-container {
+	display: grid;
+	grid-auto-flow: column;
+}
+.puzzle,
+[data-hide-solved-puzzles] .puzzle:valid {
+	display: none;
+}
+.puzzle:valid + .puzzle {
+	display: initial;
+}
+
+
+
+
+[data-puzzle-id="checkbox-chain"] input:not(:first-of-type) {
+	display: none;
+	pointer-events: none;
+}
+[data-puzzle-id="checkbox-chain"]:focus-within + * {
+	display: initial;
+}

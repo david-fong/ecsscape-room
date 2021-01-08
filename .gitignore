@@ -1,0 +1,16 @@
+
+# general
+.DS_Store
+
+# npm
+/node_modules/
+
+# build
+/dist/
+
+# vim
+*.swp
+*.swo
+*.orig
+Session.vim
+
