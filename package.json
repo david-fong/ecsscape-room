@@ -3,9 +3,21 @@
   "name": "ecsscape-room",
   "version": "0.0.0",
   "description": "A collection of puzzles that do not use javascript.",
+  "author": "David Fong (https://github.com/david-fong)",
+  "repository": "github:david-fong/ecsscape-room",
   "main": "dist/client/index.js",
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "preinstall": "npx only-allow pnpm",
+    "devinit": "bash scripts/devinit.sh",
+    "build": "bash scripts/pack.sh"
   },
-  "author": "David Fong"
+  "devDependencies": {
+    "@types/ejs": "^3.0.5",
+    "@types/sass": "^1.16.0",
+    "ejs": "^3.1.5",
+    "sass": "^1.32.2"
+  }
 }
