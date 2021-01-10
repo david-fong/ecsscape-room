@@ -1,0 +1,21 @@
+{
+	"title": "JSON schema for puzzle info",
+	"description": "",
+	"$schema": "https://json-schema.org/draft-07/schema",
+	"definitions": {
+	},
+	"type": "object",
+	"required": ["displayName", "author"],
+	"properties": {
+		"displayName": {
+			"description": "",
+			"type": "string",
+			"pattern": "[ 0-9a-zA-Z.'-_\\\"]{3,25}"
+		},
+		"author": {
+			"description": "",
+			"type": "string",
+			"pattern": "[ 0-9a-zA-Z.'-_\\\"]{3,25}"
+		}
+	}
+}

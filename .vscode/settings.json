@@ -29,9 +29,6 @@
     },
     "json.schemas": [
         {
-            "fileMatch": [ "**/*tsconfig.json", ],
-            "url": "http://json.schemastore.org/tsconfig",
-        }, {
             "fileMatch": [ "**/*cSpell.json", ],
             "url": "https://raw.githubusercontent.com/streetsidesoftware/cspell/cspell4/cspell.schema.json",
         }, {
@@ -43,6 +40,9 @@
         }, {
             "fileMatch": [ "**/.eslintrc.json", ],
             "url": "https://json.schemastore.org/eslintrc",
+        }, {
+            "fileMatch": [ "/src/puzzles/**/info.json", ],
+            "url": "/src/puzzleinfo.schema.json",
         },
     ],
 
@@ -72,7 +72,4 @@
     "[html]": {
         "editor.insertSpaces": false,
     },
-    "cSpell.enableFiletypes": [
-        "shellscript"
-    ],
 }
