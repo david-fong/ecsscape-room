@@ -16,6 +16,11 @@
 			"description": "",
 			"type": "string",
 			"pattern": "[ 0-9a-zA-Z.'-_\\\"]{3,25}"
+		},
+		"passphrase": {
+			"description": "",
+			"type": "string",
+			"pattern": "[ 0-9a-zA-Z.'-_\\\"]{3,25}"
 		}
 	}
 }

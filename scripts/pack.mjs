@@ -6,10 +6,10 @@ import ejs from "ejs";
 import sass from "sass";
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
-function SRC_PATH(relative) {
+function SRC_PATH(relative = "") {
     return path.resolve(__dirname, "../src", relative);
 }
-function DIST_PATH(relative) {
+function DIST_PATH(relative = "") {
     return path.resolve(__dirname, "../dist", relative);
 }
 const MODE = (() => {
@@ -19,18 +19,23 @@ const MODE = (() => {
 
 
 ejs.renderFile(SRC_PATH("index.ejs"), {
-    puzzles: [],
+    stations: [],
+    cars: [],
 }, {
+    root: SRC_PATH(),
     strict: true,
     compileDebug: MODE.dev,
     rmWhitespace: MODE.prod,
 }, (err, str) => {
     if (err) {
         console.error(err);
+        return;
     }
-    fs.writeFile(DIST_PATH("index.html"), str, {
+    fs.writeFileSync(DIST_PATH("index.html"), str, {
         encoding: "utf-8",
-    }, () => {});
+    }, () => {
+        console.log("done ejs rendering");
+    });
 });
 
 sass.renderSync({

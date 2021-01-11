@@ -1,8 +1,6 @@
 
 # Things To Do
 
-- Get WebPack for EJS and get SASS.
-
 ## Ideas
 
 - HTML global attributes
