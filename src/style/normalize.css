@@ -1,4 +1,4 @@
-@use 'normalize.vendor';
+@import "normalize.vendor";
 
 table {
 	border-spacing: 0;

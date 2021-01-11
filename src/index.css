@@ -1,5 +1,5 @@
-@use 'style/normalize';
-@use 'style/util';
+@import "style/normalize";
+@import "style/util";
 
 .top {
     position: fixed;

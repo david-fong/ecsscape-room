@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "lib": ["dom", "es2020"]
+    },
+    "include": ["src/**/*.jsx"]
+}

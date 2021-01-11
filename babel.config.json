@@ -1,0 +1,11 @@
+{
+    "plugins": [
+        ["react-css-modules", {}]
+    ],
+    "presets": [
+        ["@babel/preset-react", {
+            "runtime": "automatic",
+            "development": true
+        }]
+    ]
+}

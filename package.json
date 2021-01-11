@@ -15,9 +15,18 @@
     "build": "bash scripts/pack.sh"
   },
   "devDependencies": {
-    "@types/ejs": "^3.0.5",
-    "@types/sass": "^1.16.0",
-    "ejs": "^3.1.5",
-    "sass": "^1.32.2"
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "@babel/register": "^7.12.10",
+    "@babel/types": "^7.12.12",
+    "@types/node": "^14.14.20",
+    "@types/prop-types": "^15.7.3",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "babel-plugin-react-css-modules": "^5.2.6",
+    "esm": "^3.2.25",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   }
 }
