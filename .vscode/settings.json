@@ -63,15 +63,10 @@
         "composes",
     ],
 
-    "[typescript]": {
-        "editor.insertSpaces": false,
-    },
-    "[css]": {
-        "editor.insertSpaces": false,
-    },
-    "[sass]": {
-        "editor.insertSpaces": false,
-    },
+    "[javascript]": { "editor.insertSpaces": false },
+    "[typescript]": { "editor.insertSpaces": false },
+    "[css]": {        "editor.insertSpaces": false },
+    "[sass]": {       "editor.insertSpaces": false },
     "[html]": {
         "editor.insertSpaces": false,
         "editor.tabSize": 3,

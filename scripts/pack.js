@@ -1,29 +1,35 @@
-const process = require("process");
-const path = require("path");
-const fs = require("fs");
-
 require("@babel/register")({});
-const reactDom = require("react-dom/server");
+import process from "process";
+import path from "path";
+import fs from "fs";
+import stream from "stream";
+import reactDom from "react-dom/server";
 const IndexComponent = require("../src/index.jsx").Index;
 
-// import process from "process";
-// import path from "path";
-// import fs from "fs";
+/** @param {stream.Readable[]} streams */
+function mergeStreams(...streams) {
+	let p = new stream.PassThrough();
+	let waiting = streams.length;
+	for (const stream of streams) {
+		p = stream.pipe(p, { end: (waiting-- === 0) });
+	}
+	return p;
+}
 
-// require("@babel/register")({});
-// import reactDom from "react-dom/server";
-// import IndexComponent from "../src/index.jsx";
-
-//const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 const SRC_PATH  = (relative = "") => path.resolve(__dirname, "../src",  relative);
 const DIST_PATH = (relative = "") => path.resolve(__dirname, "../dist", relative);
 const MODE = (() => {
-    const dev = process.env.NODE_ENV !== "production";
-    return { dev, prod: !dev };
+	const dev = process.env.NODE_ENV !== "production";
+	return { dev, prod: !dev };
 })();
 
-reactDom.renderToStaticNodeStream(IndexComponent)
+mergeStreams(
+	// TODO.learn why isn't the order working? Should I just install a library?
+	fs.createReadStream(SRC_PATH("index.html")),
+	reactDom.renderToStaticNodeStream(IndexComponent),
+	stream.Readable.from(["\n</html>"]),
+)
 .pipe(fs.createWriteStream(DIST_PATH("index.html"), {}))
 .on("finish", () => {
-    console.info("finished compiling react to markup.");
+	console.info("finished compiling react to markup.");
 });
