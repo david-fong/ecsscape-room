@@ -36,4 +36,8 @@
 		"noFallthroughCasesInSwitch": true,
 	},
 	"include": ["src/"],
+	"ts-node": {
+		"pretty": true,
+		"transpileOnly": true,
+	},
 }

@@ -1,7 +1,8 @@
 
 # Things To Do
 
-- Use merge2 for pack script and use css-modules-require-hook.
+- Investigate if we can use the PostCSS api to do bundling for CSS.
+- [](https://www.npmjs.com/package/typescript-plugin-css-modules)
 
 ## Ideas
 

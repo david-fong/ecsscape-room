@@ -1,7 +1,12 @@
 
-.top {
+.player-top-state-wrapper {
     user-select: none;
-
+    display: contents;
+}
+.player-top-state-wrapper > input {
+    display: none;
+}
+.player-top {
     position: fixed;
     top: 0; left: 0; bottom: 0; right: 0;
     display: grid;
@@ -9,9 +14,11 @@
     justify-content: stretch;
     align-items: stretch;
 }
-
-.top > input {
-    display: none;
+.player-top:nth-child(1) {
+    grid-area: sidebar;
+}
+.player-top:nth-child(2) {
+    grid-area: main;
 }
 
 
