@@ -1,6 +1,8 @@
 
 # Things To Do
 
+- Use merge2 for pack script and use css-modules-require-hook.
+
 ## Ideas
 
 - HTML global attributes

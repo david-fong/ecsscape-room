@@ -1,7 +1,7 @@
 
 function LocHiddenRadio(prop) {
 	const { which, id } = prop;
-	return <input type="radio" tabIndex="-1" name={id} id={`${which}-goto-${id}`} style={{display:"none"}}></input>;
+	return <input type="radio" name={id} id={`${which}-goto-${id}`} tabIndex="-1"></input>;
 }
 
 const locs = [

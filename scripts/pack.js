@@ -1,20 +1,14 @@
 require("@babel/register")({});
+require("css-modules-require-hook")({}); // https://github.com/css-modules/css-modules-require-hook#usage
+
 import process from "process";
 import path from "path";
 import fs from "fs";
 import stream from "stream";
+import merge from "merge2";
+
 import reactDom from "react-dom/server";
 const IndexComponent = require("../src/index.jsx").Index;
-
-/** @param {stream.Readable[]} streams */
-function mergeStreams(...streams) {
-	let p = new stream.PassThrough();
-	let waiting = streams.length;
-	for (const stream of streams) {
-		p = stream.pipe(p, { end: (waiting-- === 0) });
-	}
-	return p;
-}
 
 const SRC_PATH  = (relative = "") => path.resolve(__dirname, "../src",  relative);
 const DIST_PATH = (relative = "") => path.resolve(__dirname, "../dist", relative);
@@ -23,7 +17,7 @@ const MODE = (() => {
 	return { dev, prod: !dev };
 })();
 
-mergeStreams(
+merge(
 	// TODO.learn why isn't the order working? Should I just install a library?
 	fs.createReadStream(SRC_PATH("index.html")),
 	reactDom.renderToStaticNodeStream(IndexComponent),
