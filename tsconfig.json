@@ -1,9 +1,39 @@
 {
-    "compilerOptions": {
-        "allowJs": true,
-        "strict": true,
-        "forceConsistentCasingInFileNames": true,
-        "lib": ["dom", "es2020"]
-    },
-    "include": ["src/**/*.jsx"]
+	"compilerOptions": {
+		// Project References:
+		"composite": true,
+
+		// Compiler Behaviour:
+		"moduleResolution": "node",
+		"forceConsistentCasingInFileNames": true,
+		"importHelpers": true,
+		"skipLibCheck": true, // time-saving measure.
+		"importsNotUsedAsValues": "error",
+		"resolveJsonModule": true,
+
+		// Language Settings:
+		"target": "es2017",
+		"module": "ES2020",
+		"lib": [ "es2020", ],
+		"jsx": "react-jsx",
+		//"experimentalDecorators": true,
+
+		// Emit Flags:
+		"sourceMap": true,
+		//"removeComments": true,
+		"alwaysStrict": true,
+		"preserveConstEnums": true,
+		"useDefineForClassFields": true,
+
+		// Grammar Checking:
+		"strict": true,
+		"strictPropertyInitialization": false,
+		"noImplicitReturns": true,
+		"noImplicitAny": true,
+		"noUncheckedIndexedAccess": true,
+
+		// Linting:
+		"noFallthroughCasesInSwitch": true,
+	},
+	"include": ["src/"],
 }
