@@ -10,11 +10,10 @@
 		"skipLibCheck": true, // time-saving measure.
 		"importsNotUsedAsValues": "error",
 		"resolveJsonModule": true,
-		"checkJs": true,
 
 		// Language Settings:
 		"target": "es2017",
-		"module": "es2020",
+		"module": "CommonJS",
 		"lib": [ "es2020", ],
 		"jsx": "react-jsx",
 		//"experimentalDecorators": true,

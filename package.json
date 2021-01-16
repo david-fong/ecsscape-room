@@ -6,9 +6,6 @@
   "author": "David Fong (https://github.com/david-fong)",
   "repository": "github:david-fong/ecsscape-room",
   "main": "dist/client/index.js",
-  "sideEffects": [
-    "*.css"
-  ],
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "devinit": "bash scripts/devinit.sh",

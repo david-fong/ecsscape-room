@@ -1,8 +1,7 @@
 
 # Things To Do
 
-- Investigate if we can use the PostCSS api to do bundling for CSS.
-- [](https://www.npmjs.com/package/typescript-plugin-css-modules)
+Find out why the react compilation isn't working.
 
 ## Ideas
 
