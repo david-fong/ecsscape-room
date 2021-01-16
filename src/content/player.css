@@ -45,7 +45,6 @@ tabbed to after the puzzle's answer is used. */
 }
 .super-hidden-text::selection {
     background-color: transparent;
-    animation: name duration timing-function delay iteration-count direction fill-mode;
 }
 /* has tabindex 0 and draggable true */
 .super-hidden-text-flashlight {

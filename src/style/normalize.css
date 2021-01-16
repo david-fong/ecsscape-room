@@ -1,4 +1,6 @@
+/* #region vendor-normalize */
 @import "normalize.vendor";
+/* #endregion */
 
 table {
 	border-spacing: 0;
