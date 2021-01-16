@@ -13,10 +13,15 @@
 
 		// Language Settings:
 		"target": "es2017",
-		"module": "ES2020",
+		"module": "es2020",
 		"lib": [ "es2020", ],
 		"jsx": "react-jsx",
 		//"experimentalDecorators": true,
+
+		// Output Routing:
+		"outDir": "./dist/.ts/",
+		"rootDir": "./src/",
+		"baseUrl": "./src/",
 
 		// Emit Flags:
 		"sourceMap": true,
@@ -34,6 +39,13 @@
 
 		// Linting:
 		"noFallthroughCasesInSwitch": true,
+
+		"plugins": [{
+			"name": "typescript-plugin-css-modules",
+			"options": {
+				"customMatcher": "[.]m[.]css$",
+			},
+		}],
 	},
 	"include": ["src/"],
 	"ts-node": {

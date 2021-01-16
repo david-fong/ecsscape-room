@@ -45,6 +45,7 @@
             "url": "/src/puzzleinfo.schema.json",
         },
     ],
+    "explorer.sortOrder": "default",
 
     "files.trimTrailingWhitespace": true,
 

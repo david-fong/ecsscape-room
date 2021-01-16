@@ -1,9 +1,9 @@
 
-.player-top-state-wrapper {
+.player-top_state-wrapper {
     user-select: none;
     display: contents;
 }
-.player-top-state-wrapper > input {
+.player-top_state-wrapper > input {
     display: none;
 }
 .player-top {

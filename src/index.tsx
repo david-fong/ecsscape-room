@@ -1,4 +1,5 @@
-import { EnumDesc, player1 } from "./defs";
+import { EnumDesc, player1 } from "./content/defs";
+import { Player } from "./content/player";
 
 
 export namespace EnumJsx {
@@ -9,7 +10,7 @@ export namespace EnumJsx {
 		return <input name={p.id} id={p.HtmlIdIs} tabIndex={-1} type="radio"></input>;
 	}
 
-	// Nte: tabIndex must be -1 to prevent keyboard accessibility after
+	// Note: tabIndex must be -1 to prevent keyboard accessibility after
 	// the has variable is set to true. If we had JS, we could disable
 	// the has input when checked, but we don't have JS.
 	export function LabelHas(p: EnumDesc) {
@@ -20,23 +21,15 @@ export namespace EnumJsx {
 	}
 	/* TODO.impl emit these all to a css source file before running postCSS. */
 	export function CssHas(p: EnumDesc) {
-		return `#${p.HtmlIdHas} ~ player-top label[for="${p.HtmlIdHas}"] { display: none; }`;
+		// When the "acquire" label is clicked, this makes it disappear:
+		return `#${p.HtmlIdHas} ~ player-top label[for="${p.HtmlIdHas}"] { display: initial; }`;
 	}
 }
 
 export const Index = <body>
 	{/* TODO.impl global state here. */}
 	{[player1,].map((player) => {
-		return <div key={player.id} className="player-top-state-wrapper">
-			{player.items.flatMap((desc) => [
-				<EnumJsx.Has key={desc.id} {...desc}/>,
-				<EnumJsx.Is  key={desc.id + player.items.length} {...desc}/>,
-			])}
-			<div className="player-top">
-				<div></div>
-				<div></div>
-			</div>
-		</div>
+		return <Player key={player.id} {...player}/>
 	})}
 	{/* TODO.impl player-independent UI parts (ex. switch player radio menu 🥁) */}
 </body>;
