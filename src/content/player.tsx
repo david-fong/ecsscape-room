@@ -1,5 +1,5 @@
 import type { EnumDesc, PlayerDesc } from "./defs";
-const style = require("./player.css") as typeof import("./player.css").default; // yucky :(
+import style from "./player.css";
 
 export namespace EnumJsx {
 	export function Has(p: EnumDesc) {

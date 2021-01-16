@@ -10,15 +10,7 @@ const MODE = (() => {
 	const dev = process.env.NODE_ENV !== "production";
 	return { dev, prod: !dev };
 })();
-
-require("ts-node").register({
-	project: path.resolve(__dirname, "../tsconfig.json"),
-});
 const cssLocalIdent = MODE.dev ? "[local]_[hash:base64:5]" : "[hash:base64:7]";
-require("css-modules-require-hook")({
-	// https://github.com/css-modules/css-modules-require-hook#usage
-	generateScopedName: cssLocalIdent,
-});
 
 // =========================================================================
 
@@ -47,12 +39,20 @@ const postcssPromise = postcss([
 	setImmediate(() => { throw reason; });
 });
 
-
 // =========================================================================
 
+require("ts-node").register({
+	project: path.resolve(__dirname, "../tsconfig.json"),
+});
+require("css-modules-require-hook")({
+	// https://github.com/css-modules/css-modules-require-hook#usage
+	generateScopedName: cssLocalIdent,
+	rootDir: SRC_PATH(),
+});
 
 import ReactDom from "react-dom/server";
-const IndexComponent = require("../src/index.tsx").Index;
+const IndexComponent = require("../src/index").Index;
+//import { Index as IndexComponent } from "../src/index";
 
 postcssPromise.then(() => {
 	merge(
