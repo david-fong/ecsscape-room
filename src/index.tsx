@@ -1,10 +1,10 @@
-import { player1 } from "./content/defs";
+import { players } from "./content/defs";
 import { Player } from "./content/player";
 
 export const Index = <body>
-	{/* TODO.impl global state here. */}
-	{[player1,].map((player) => {
-		return <Player key={player.id} {...player}/>
+	{players.map((p) => <Player.Is key={p.id} {...p}/>)}
+	{players.map((p) => {
+		return <Player key={p.id} {...p}/>
 	})}
-	{/* TODO.impl player-independent UI parts (ex. switch player radio menu 🥁) */}
+	<Player.Picker players={players}/>
 </body>;

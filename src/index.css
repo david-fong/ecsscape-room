@@ -2,3 +2,7 @@
 @import "style/util";
 
 @import "content/player.css";
+
+.state {
+	display: none;
+}

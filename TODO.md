@@ -1,7 +1,7 @@
 
 # Things To Do
 
-Find out why the react compilation isn't working.
+Add cssnano to the build process when I'm ready to do a test release.
 
 ## Ideas
 

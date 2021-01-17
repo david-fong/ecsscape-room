@@ -1,10 +1,10 @@
 
+
 export interface EnumDesc {
+	readonly GroupId: string;
 	readonly id: string;
 	readonly displayName: string;
 	readonly svgSpriteId: string;
-	readonly HtmlIdHas: string;
-	readonly HtmlIdIs: string;
 }
 export interface PlayerDesc {
 	readonly id: number;
@@ -12,21 +12,38 @@ export interface PlayerDesc {
 	readonly items: readonly EnumDesc[];
 }
 
+function ItemEnumDescInit(
+	owner: PlayerDesc["id"],
+	min: { dName: string, svgId?: string },
+	id: number,
+): EnumDesc {
+	return {
+		GroupId: `player${owner}-item`,
+		id: id.toString(),
+		displayName: min.dName,
+		svgSpriteId: min.svgId ?? min.dName.replace(/\s+/,"-"),
+	}
+}
 
-export const player1 = Object.freeze<PlayerDesc>({
+
+const player1 = Object.freeze<PlayerDesc>({
 	id: 0,
-	displayName: "",
+	displayName: "player1",
 	items: ([
 		{ dName: "froggy wallet" },
 		{ dName: "", svgId: "" },
 		{ dName: "", svgId: "" },
-	]).map((desc, index) => {
-		return {
-			HtmlIdHas: "item-has-" + index,
-			HtmlIdIs:  "item-is-"  + index,
-			id: index.toString(),
-			displayName: desc.dName,
-			svgSpriteId: desc.svgId ?? desc.dName.replace(/\s+/,"-"),
-		} as EnumDesc;
-	}),
+	]).map(ItemEnumDescInit.bind(null, 0)),
 });
+
+const player2 = Object.freeze<PlayerDesc>({
+	id: 1,
+	displayName: "player2",
+	items: ([
+		{ dName: "" },
+		{ dName: "", svgId: "" },
+		{ dName: "", svgId: "" },
+	]).map(ItemEnumDescInit.bind(null, 1)),
+});
+
+export const players = Object.freeze([player1, player2]);
