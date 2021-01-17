@@ -11,8 +11,7 @@
         "node_modules/": true,
         //"{**/.templates/,**/*tsconfig.json}": true,
         "{**/.eslintrc.*,.eslintignore}": true,
-        "scripts/webpack/*.js": true,
-        "**/*.css.d.ts": true,
+        "src/**/*.css.json": true,
     },
     "search.exclude": {
         "**/node_modules": true,
@@ -21,7 +20,7 @@
 
         "{**/.templates/,**/*tsconfig.json}": false,
         "{**/.eslintrc.*,.eslintignore}": false,
-        "**/*.css.d.ts": false,
+        "src/**/*.css.json": false,
     },
     "files.associations": {
         //"**/dist/{client,server}/**/*.js": "json", // Loads bundled js much faster.

@@ -19,10 +19,10 @@
 		//"experimentalDecorators": true,
 		"allowSyntheticDefaultImports": true,
 
-		// Output Routing:
-		"outDir": "./dist/.ts/",
+		// Routing:
 		"rootDir": "./src/",
 		"baseUrl": "./src/",
+		"outDir": "./dist/.ts/",
 
 		// Emit Flags:
 		"sourceMap": true,

@@ -1,1 +1,37 @@
 /*  */
+
+
+.super-hidden-text {
+    cursor: default;
+    user-select: none;
+    color: transparent;
+    z-index: 1;
+}
+.super-hidden-text:hover {
+    user-select: all;
+    animation-name: super-hidden-text-hover-timeout;
+    animation-fill-mode: forwards;
+    animation-delay: 2.0s;
+}
+/* prevents flashlight from being lost behind this text:
+If we decide to let the flashlight be solely for one of
+these puzzles, then make sure the flashlight cannot be
+tabbed to after the puzzle's answer is used. */
+@keyframes super-hidden-text-hover-timeout {
+    to { pointer-events: none; }
+}
+.super-hidden-text::selection {
+    background-color: transparent;
+}
+/* has tabindex 0 and draggable true */
+.super-hidden-text-flashlight {
+    display: none;
+    z-index: 0;
+}
+.super-hidden-text-flashlight:first-of-type {
+    display: initial;
+}
+.super-hidden-text-flashlight:focus-within,
+.super-hidden-text-flashlight:focus-within > .super-hidden-text-flashlight {
+    display: initial;
+}

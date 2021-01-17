@@ -1,8 +1,5 @@
 @import "style/normalize";
 @import "style/util";
 
+@import "content/state.css";
 @import "content/player.css";
-
-.state {
-	display: none;
-}

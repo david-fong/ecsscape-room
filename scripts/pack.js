@@ -10,9 +10,7 @@ const MODE = (() => {
 	const dev = process.env.NODE_ENV !== "production";
 	return { dev, prod: !dev };
 })();
-const cssLocalIdent = "[name]__[local]"; // using hash doesn't sync. I'm
-	// being exposed for doing janky things. I should look into using the
-	// generated json from postcss-modules to do the syncing...
+const cssLocalIdent = MODE.dev ? "[name]__[local]" : "[hash:base64:7]";
 
 // =========================================================================
 
@@ -49,11 +47,11 @@ const postcssPromise = postcss([
 require("ts-node").register({
 	project: path.resolve(__dirname, "../tsconfig.json"),
 });
-require("css-modules-require-hook")({
-	// https://github.com/css-modules/css-modules-require-hook#usage
-	rootDir: SRC_PATH(),
-	generateScopedName: cssLocalIdent,
-});
+// require("css-modules-require-hook")({
+// 	// https://github.com/css-modules/css-modules-require-hook#usage
+// 	rootDir: SRC_PATH(),
+// 	generateScopedName: cssLocalIdent,
+// });
 
 import ReactDom from "react-dom/server";
 const IndexComponent = require("../src/index").Index;

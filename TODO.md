@@ -1,6 +1,10 @@
 
 # Things To Do
 
+Fix the problem of having to build twice to see changes to CSS.
+
+Start working on layout and z-index.
+
 Add cssnano to the build process when I'm ready to do a test release.
 
 ## Ideas
