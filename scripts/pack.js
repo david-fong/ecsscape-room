@@ -44,23 +44,15 @@ const postcssPromise = postcss([
 
 // =========================================================================
 
-require("ts-node").register({
-	project: path.resolve(__dirname, "../tsconfig.json"),
-});
-// require("css-modules-require-hook")({
-// 	// https://github.com/css-modules/css-modules-require-hook#usage
-// 	rootDir: SRC_PATH(),
-// 	generateScopedName: cssLocalIdent,
-// });
-
-import ReactDom from "react-dom/server";
-const IndexComponent = require("../src/index").Index;
-//import { Index as IndexComponent } from "../src/index";
-
 postcssPromise.then(() => {
+	require("ts-node").register({
+		project: path.resolve(__dirname, "../tsconfig.json"),
+	});
+	const IndexComponent = require("../src/index").Index;
+
 	merge(
 		fs.createReadStream(SRC_PATH("head.html")),
-		ReactDom.renderToStaticNodeStream(IndexComponent),
+		require("react-dom/server").renderToStaticNodeStream(IndexComponent),
 		stream.Readable.from(["\n</html>"]),
 	)
 	.pipe(fs.createWriteStream(DIST_PATH("index.html"), {}))

@@ -1,13 +1,18 @@
 
 # Things To Do
 
-Fix the problem of having to build twice to see changes to CSS.
-
 Start working on layout and z-index.
 
 Add cssnano to the build process when I'm ready to do a test release.
 
 ## Ideas
+
+### High-Level Features
+
+- Playing as multiple characters?
+- Restorable save-points? Not sure how this would work if story-progression isn't strictly linear.
+
+### Low-Level Mechanics
 
 - HTML global attributes
   - title
@@ -15,10 +20,13 @@ Add cssnano to the build process when I'm ready to do a test release.
   - draggable
   - dir
   - contenteditable
-  - accesskey
+  - accesskey (?)
 
 - CSS
   - media query on `script-enable`, `width`, `height`, and `print`.
+  - resize
+  - font-family
+    - Make various custom fonts that look like another language. Then I can have dictionary items, where selecting them in the inventory and then hovering over some text will change the font-family. Maybe I can even be extra fancy and look into making ligatures.
 
 ### Causes
 

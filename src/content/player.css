@@ -1,6 +1,6 @@
 
 .top_stateful-wrapper {
-    user-select: none;
+    user-select: none; /* <-- */
     display: contents;
 }
 .top {
