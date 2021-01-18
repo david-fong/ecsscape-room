@@ -1,49 +1,59 @@
 
 
 export interface EnumDesc {
+	/** Must only be specified for one entry in the group. */
+	readonly checked?: boolean;
 	readonly GroupId: string;
 	readonly id: string;
 	readonly displayName: string;
 	readonly svgSpriteId: string;
 }
-export interface PlayerDesc {
-	readonly id: number;
+export interface PlayerDesc extends EnumDesc {
+	readonly GroupId: "player";
+	readonly id: string;
 	readonly displayName: string;
 	readonly items: readonly EnumDesc[];
 }
 
 function ItemEnumDescInit(
 	owner: PlayerDesc["id"],
-	min: { dName: string, svgId?: string },
+	min: { dName: string, svgId?: string, checked?: true },
 	id: number,
 ): EnumDesc {
 	return {
 		GroupId: `player${owner}-item`,
 		id: id.toString(),
+		checked: min.checked,
 		displayName: min.dName,
 		svgSpriteId: min.svgId ?? min.dName.replace(/\s+/,"-"),
 	}
 }
 
-
-const player1 = Object.freeze<PlayerDesc>({
-	id: 0,
-	displayName: "player1",
-	items: ([
-		{ dName: "froggy wallet" },
-		{ dName: "", svgId: "" },
-		{ dName: "", svgId: "" },
-	]).map(ItemEnumDescInit.bind(null, 0)),
-});
-
-const player2 = Object.freeze<PlayerDesc>({
-	id: 1,
-	displayName: "player2",
-	items: ([
-		{ dName: "" },
-		{ dName: "", svgId: "" },
-		{ dName: "", svgId: "" },
-	]).map(ItemEnumDescInit.bind(null, 1)),
-});
-
-export const players = Object.freeze([player1, player2]);
+export const players = Object.freeze<PlayerDesc[]>(([
+	{
+		checked: true,
+		displayName: "player1",
+		items: ([
+			{ dName: "froggy wallet" },
+			{ dName: "", svgId: "" },
+			{ dName: "", svgId: "" },
+		]),
+	}, {
+		displayName: "player2",
+		items: ([
+			{ dName: "" },
+			{ dName: "", svgId: "" },
+			{ dName: "", svgId: "" },
+		]),
+	}
+]).map<PlayerDesc>((min, index) => {
+	const id = index.toString();
+	return {
+		checked: min.checked,
+		GroupId: "player",
+		id: index.toString(),
+		displayName: min.displayName,
+		svgSpriteId: "player" + index,
+		items: min.items.map(ItemEnumDescInit.bind(null, id)),
+	};
+}));

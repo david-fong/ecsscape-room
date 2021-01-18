@@ -19,13 +19,13 @@ export function Player(p: PlayerDesc) {
 }
 export namespace Player {
 	export function Is(p: PlayerDesc) {
-		return <input name="player-is" id={"player-is-"+p.id} type="radio" value={p.id} className={state_css.this}></input>;
+		return <State.Is {...p}/>;
 	}
 	export function LabelIs(p: PlayerDesc) {
-		return <label htmlFor={"player-is-"+p.id}>{p.displayName}</label>
+		return <State.LabelIs {...p}/>;
 	}
 	export function Picker(p: { players: readonly PlayerDesc[] }) {
-		return <div>
+		return <div className={player_css.picker}>
 			{players.map((p) => <Player.LabelIs key={p.id} {...p}/>)}
 		</div>;
 	}

@@ -3,7 +3,8 @@
 
 Start working on layout and z-index.
 
-Add cssnano to the build process when I'm ready to do a test release.
+- Add cssnano to the build process when I'm ready to do a test release.
+- If I want git to delta-compress my generated html, install stream-replace to modify ReactDom.render... to prepend a newline character before starting angle brackets.
 
 ## Ideas
 
@@ -42,4 +43,16 @@ Add cssnano to the build process when I'm ready to do a test release.
   - An element that can only complete an animation while being hovered.
   - The path must be cleared of other overlapping elements.
 
-### Interesting Cause-Effect Combinations
+## Story Brainstorming
+
+### Prompt Questions
+
+- What kind of mood / atmosphere?
+  - Ex.
+    - Suspenseful
+    - Calm / relaxed
+  - This decision will affect:
+    - Color palette
+    - Background music
+- What kind of common narratives do I want to be part of this game's story?
+- .

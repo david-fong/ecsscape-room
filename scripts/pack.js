@@ -57,7 +57,13 @@ postcssPromise.then(() => {
 	)
 	.pipe(fs.createWriteStream(DIST_PATH("index.html"), {}))
 	.on("finish", () => {
-		console.info("\ndone.");
+		console.info("\ndone rendering HTML from JSX.");
+
+		fs.writeFileSync(
+			DIST_PATH("bindings.css"),
+			require("../src/content/state").State.CssBindings(),
+		);
+		console.info("\ndone emitting state-binding css rules.");
 	});
 }).catch((reason) => {
 	setImmediate(() => { throw reason; });

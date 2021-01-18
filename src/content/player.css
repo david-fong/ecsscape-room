@@ -17,3 +17,8 @@
 .top:nth-child(2) {
     grid-area: main;
 }
+
+.picker {
+    display: grid;
+    float: right;
+}

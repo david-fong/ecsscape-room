@@ -2,3 +2,7 @@
 .this {
 	display: none;
 }
+
+.label {
+	opacity: 0.7;
+}
