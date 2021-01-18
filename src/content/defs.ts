@@ -2,16 +2,16 @@
 
 export interface EnumDesc {
 	/** Must only be specified for one entry in the group. */
-	readonly checked?: boolean;
-	readonly GroupId: string;
+	readonly default?: boolean;
+	readonly field: string;
 	readonly id: string;
-	readonly displayName: string;
-	readonly svgSpriteId: string;
+	readonly title: string;
+	readonly svgId: string;
 }
 export interface PlayerDesc extends EnumDesc {
-	readonly GroupId: "player";
+	readonly field: "player";
 	readonly id: string;
-	readonly displayName: string;
+	readonly title: string;
 	readonly items: readonly EnumDesc[];
 }
 
@@ -21,11 +21,11 @@ function ItemEnumDescInit(
 	id: number,
 ): EnumDesc {
 	return {
-		GroupId: `player${owner}-item`,
+		field: `player${owner}-item`,
 		id: id.toString(),
-		checked: min.checked,
-		displayName: min.dName,
-		svgSpriteId: min.svgId ?? min.dName.replace(/\s+/,"-"),
+		default: min.checked,
+		title: min.dName,
+		svgId: min.svgId ?? min.dName.replace(/\s+/,"-"),
 	}
 }
 
@@ -49,11 +49,11 @@ export const players = Object.freeze<PlayerDesc[]>(([
 ]).map<PlayerDesc>((min, index) => {
 	const id = index.toString();
 	return {
-		checked: min.checked,
-		GroupId: "player",
+		default: min.checked,
+		field: "player",
 		id: index.toString(),
-		displayName: min.displayName,
-		svgSpriteId: "player" + index,
+		title: min.displayName,
+		svgId: "player" + index,
 		items: min.items.map(ItemEnumDescInit.bind(null, id)),
 	};
 }));

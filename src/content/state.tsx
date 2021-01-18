@@ -4,49 +4,68 @@ const player_css = require("./player.css.json") as typeof import("./player.css")
 
 
 export namespace State {
-	export function Has(p: TU.Pikk<EnumDesc,"GroupId"|"id"|"checked">) {
+	export function Has(p: TU.Pikk<EnumDesc,"field"|"id"|"default">) {
 		// The value attribute is currently not used. Same for the Is component.
-		return <input name={p.GroupId+"-has"} id={p.GroupId+"-has-"+p.id} type="checkbox" value={p.id} className={state_css.this} defaultChecked={p.checked}></input>;
+		return <input name={p.field+"-has"} id={p.field+"-has-"+p.id} type="checkbox" value={p.id} className={state_css.this} defaultChecked={p.default}></input>;
 	}
-	export function Is(p: TU.Pikk<EnumDesc,"GroupId"|"id"|"checked">) {
-		return <input name={p.GroupId+"-is"} id={p.GroupId+"-is-"+p.id} type="radio" value={p.id} className={state_css.this} defaultChecked={p.checked}></input>;
-	}
-
-	export function LabelHas(p: TU.Pikk<EnumDesc,"GroupId"|"id"|"displayName">) {
-		LabelHas.CssSelectors.push(LabelHas.mkSel(p));
-		return <label htmlFor={p.GroupId+"-has-"+p.id} className={state_css.label}>{p.displayName}</label>;
-	}
-	export function LabelIs(p: TU.Pikk<EnumDesc,"GroupId"|"id"|"displayName">) {
-		LabelIs.CssSelectors.push(LabelIs.mkSel(p));
-		return <label htmlFor={p.GroupId+"-is-"+p.id} className={state_css.label}>{p.displayName}</label>;
+	export function Is(p: TU.Pikk<EnumDesc,"field"|"id"|"default">) {
+		return <input name={p.field+"-is"} id={p.field+"-is-"+p.id} type="radio" value={p.id} className={state_css.this} defaultChecked={p.default}></input>;
 	}
 
-	export namespace LabelHas {
-		export function mkSel(p: TU.Pikk<EnumDesc,"GroupId"|"id">) {
-			// When the "acquire" label is clicked, this makes it disappear:
-			return `#${p.GroupId+"-has-"+p.id}:checked ~ * label[for="${p.GroupId+"-has-"+p.id}"]`;
-		}
-		export const CssSelectors: string[] = [];
+	export function LabelHas(p: TU.Pikk<EnumDesc,"field"|"id"|"title">) {
+		CssRxn["label-has"].targets.push(p);
+		return <label htmlFor={p.field+"-has-"+p.id} className={state_css.label}>{p.title}</label>;
 	}
-	export namespace LabelIs {
-		export function mkSel(p: TU.Pikk<EnumDesc,"GroupId"|"id">) {
-			return `#${p.GroupId+"-is-"+p.id}:checked ~ * label[for="${p.GroupId+"-is-"+p.id}"]`;
-		}
-		export const CssSelectors: string[] = [];
+	export function LabelIs(p: TU.Pikk<EnumDesc,"field"|"id"|"title">) {
+		CssRxn["label-is"].targets.push(p);
+		return <label htmlFor={p.field+"-is-"+p.id} className={state_css.label}>{p.title}</label>;
 	}
-	/**
-	 * This should only be considered complete once the JSX has been
-	 * fully rendered to HTML.
-	 */
-	export function CssBindings(): string {
-		let retval = "";
-		if (LabelHas.CssSelectors.length) {
-			retval += LabelHas.CssSelectors.join(",\n") + "{ display: none; }";
-		}
-		if (LabelIs.CssSelectors.length) {
-			retval += LabelIs.CssSelectors.join(",\n") + "{ opacity: 1.0; }";
-		}
-		return retval;
-	};
 }
 Object.freeze(State);
+
+
+export namespace CssRxn {
+	export interface Fields {
+		/** @default "is" */
+		dependsOn?: "has" | "is",
+		mkTarget: (p: TU.Pikk<EnumDesc,"field"|"id">) => string;
+		rule: string;
+		targets: TU.Pikk<EnumDesc,"field"|"id">[],
+	}
+}
+export const CssRxn = Object.freeze({
+	"label-has": {
+		dependsOn: "has",
+		mkTarget: (p) => `[for="${p.field+"-has-"+p.id}"].${state_css.label}`,
+		rule: `{ display: none; }`,
+	} as CssRxn.Fields,
+	"label-is": {
+		mkTarget: (p) => `[for="${p.field+"-is-"+p.id}"].${state_css.label}`,
+		rule: `{ opacity: 1.0; }`,
+	} as CssRxn.Fields,
+	"player-top": {
+		mkTarget: (p) => `[data-player-id="${p.id}"].${player_css.top}`,
+		rule: `{ visibility: visible; }`,
+	} as CssRxn.Fields,
+});
+for (const key in CssRxn) {
+	const fields = CssRxn[key as keyof typeof CssRxn];
+	fields.dependsOn ??= "is";
+	fields.targets = [];
+	Object.freeze(fields);
+}
+Object.freeze(CssRxn);
+
+/**
+ * This should only be considered complete once the JSX has been
+ * fully rendered to HTML.
+ */
+export function CssRxnBindings(): string {
+	return Object.entries(CssRxn).map(([id, desc]) => {
+		if (desc.targets.length === 0) return "";
+		return desc.targets.map((p) => {
+			const id = `${p.field}-${desc.dependsOn}-${p.id}`;
+			return `:checked#${id} ~ * ${desc.mkTarget(p)}`;
+		}).join(",\n") + `\n${desc.rule}`;
+	}).join("\n\n");
+};

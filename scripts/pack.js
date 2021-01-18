@@ -61,7 +61,7 @@ postcssPromise.then(() => {
 
 		fs.writeFileSync(
 			DIST_PATH("bindings.css"),
-			require("../src/content/state").State.CssBindings(),
+			require("../src/content/state").CssRxnBindings(),
 		);
 		console.info("\ndone emitting state-binding css rules.");
 	});
