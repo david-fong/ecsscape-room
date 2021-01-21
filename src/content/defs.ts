@@ -10,46 +10,44 @@ export interface EnumDesc {
 }
 export interface PlayerDesc extends EnumDesc {
 	readonly field: "player";
-	readonly id: string;
-	readonly title: string;
 	readonly items: readonly EnumDesc[];
 }
 
 function ItemEnumDescInit(
 	owner: PlayerDesc["id"],
-	min: { dName: string, svgId?: string, checked?: true },
+	min: { title: string, svgId?: string, default?: true },
 	id: number,
 ): EnumDesc {
 	return {
 		field: `player${owner}-item`,
 		id: id.toString(),
-		default: min.checked,
-		title: min.dName,
-		svgId: min.svgId ?? min.dName.replace(/\s+/,"-"),
+		default: min.default,
+		title: min.title,
+		svgId: min.svgId ?? min.title.replace(/\s+/,"-"),
 	}
 }
 
 export const players = Object.freeze<PlayerDesc[]>(([
 	{
-		checked: true,
+		default: true,
 		displayName: "player1",
 		items: ([
-			{ dName: "froggy wallet" },
-			{ dName: "", svgId: "" },
-			{ dName: "", svgId: "" },
+			{ title: "unhelpful frog" },
+			{ title: "tooltip thingy", svgId: "" },
+			{ title: "bland crayon", svgId: "" },
 		]),
 	}, {
 		displayName: "player2",
 		items: ([
-			{ dName: "" },
-			{ dName: "", svgId: "" },
-			{ dName: "", svgId: "" },
+			{ title: "broken flashlight" },
+			{ title: "ping-pong ball", svgId: "" },
+			{ title: "<redacted>", svgId: "" },
 		]),
 	}
 ]).map<PlayerDesc>((min, index) => {
 	const id = index.toString();
 	return {
-		default: min.checked,
+		default: min.default,
 		field: "player",
 		id: index.toString(),
 		title: min.displayName,

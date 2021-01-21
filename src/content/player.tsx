@@ -1,3 +1,4 @@
+import { Editable } from "./editable";
 import { PlayerDesc, players } from "./defs";
 import { CssRxn, State } from "./state";
 const player_css = require("./player.css.json") as typeof import("./player.css").default;
@@ -13,7 +14,9 @@ export function Player(p: PlayerDesc) {
             <div>
 				{p.items.map((item) => <State.LabelIs key={item.id} {...item}/>)}
 			</div>
-            <div></div>
+			<div>
+            	<Editable placeholder="hi"/>
+			</div>
         </div>
     </div>;
 }

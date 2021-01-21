@@ -2,6 +2,17 @@
 @import "normalize.vendor";
 /* #endregion */
 
+body {
+    user-select: none; /* <-- */
+	font-family: monospace;
+	color: var(--c-fg);
+	background-color: var(--c-bg);
+}
+
+[contenteditable], [contenteditable="true"] {
+	outline: none;
+}
+
 table {
 	border-spacing: 0;
 }

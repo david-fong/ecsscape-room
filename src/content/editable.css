@@ -1,0 +1,7 @@
+
+[contenteditable] {
+	word-break: break-all;
+}
+[contenteditable="true"]:empty::before {
+    content: "derp";
+}

@@ -24,6 +24,7 @@ Start working on layout and z-index.
   - accesskey (?)
 
 - CSS
+  - `:target` This is super cool. I'll definitely use this.
   - media query on `script-enable`, `width`, `height`, and `print`.
   - resize
   - font-family
@@ -56,3 +57,15 @@ Start working on layout and z-index.
     - Background music
 - What kind of common narratives do I want to be part of this game's story?
 - .
+
+### Item Ideas
+
+- broken: flashlight
+- dubious
+- bland: crayon?
+- scared: hamster
+- expired: milk
+
+#### Various Frogs
+
+useless, unhelpful, uncooperative, upside-down, injured, delusional, confused, dead, dried up, multi-purpose, rickroll, stinky, wildcard, itchy.
