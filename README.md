@@ -1,7 +1,7 @@
 
 # eCSScape Room
 
-A browser escape-room game that runs without JavaScript.
+A browser escape-room game that runs without any JavaScript on the clientside.
 
 This project is currently in its very beginning phase. The story has yet to be thought out, the main mechanics are still being explored, and the project architecture and build process are still in the works. I definitely see myself needing help with the story-writing and with the artwork to achieve the level of polish I'm imagining. Once I have prototyped those things and set some baselines, I will open up to ideas, feedback, and contributions.
 

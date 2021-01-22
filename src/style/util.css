@@ -1,5 +1,12 @@
 /*  */
 
+.hide-scrollbars {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.hide-scrollbars::-webkit-scrollbar {
+    display: none;
+}
 
 .super-hidden-text {
     cursor: default;

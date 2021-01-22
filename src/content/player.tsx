@@ -1,8 +1,11 @@
 import { Editable } from "./editable";
-import { PlayerDesc, players } from "./defs";
 import { CssRxn, State } from "./state";
+import { TrickFeed } from "./trickfeed";
+import { PlayerDesc, players } from "./defs";
 const player_css = require("./player.css.json") as typeof import("./player.css").default;
 
+/**
+ */
 export function Player(p: PlayerDesc) {
 	CssRxn["player-top"].targets.push(p);
     return <div key={p.id} className={player_css["top_stateful-wrapper"]}>
@@ -15,7 +18,13 @@ export function Player(p: PlayerDesc) {
 				{p.items.map((item) => <State.LabelIs key={item.id} {...item}/>)}
 			</div>
 			<div>
-            	<Editable placeholder="hi"/>
+            	<Editable placeholder="<deleted>"/>
+				<TrickFeed children={[{},{},{},{},{},{},{},{},{}].map((min, index) => {
+					return {
+						...min,
+						id: index,
+					};
+				})}/>
 			</div>
         </div>
     </div>;

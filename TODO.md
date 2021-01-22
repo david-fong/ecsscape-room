@@ -23,6 +23,10 @@ Start working on layout and z-index.
   - contenteditable
   - accesskey (?)
 
+- HTML Form / REST server component?
+  - Clientside HTML wrapped by a form element
+    - Multiple submission buttons set the `formaction` attribute to communicate with various serverside actions.
+
 - CSS
   - `:target` This is super cool. I'll definitely use this.
   - media query on `script-enable`, `width`, `height`, and `print`.
@@ -60,12 +64,20 @@ Start working on layout and z-index.
 
 ### Item Ideas
 
-- broken: flashlight
-- dubious
-- bland: crayon?
-- scared: hamster
-- expired: milk
+- broken flashlight
+- bland crayon
+- scared hamster
+- expired milk
+- car keys
+- fred
+- ungrateful snail
+- night-vision goggles
+  - Uses css filter properties
 
 #### Various Frogs
 
-useless, unhelpful, uncooperative, upside-down, injured, delusional, confused, dead, dried up, multi-purpose, rickroll, stinky, wildcard, itchy.
+useless, unhelpful, uncooperative, upside-down, injured soccer, delusional, confused, dead, dried up, multi-purpose, rick-roll, stinky, wildcard, itchy, invisible.
+
+## Development Notes / Practices
+
+- With JSX, for highly used elements, sort attributes by how common they are between instances. This should improve compression. But for CSS, always put the most discriminating part of the selector as far right as possible.

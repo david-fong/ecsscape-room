@@ -12,6 +12,11 @@ export interface PlayerDesc extends EnumDesc {
 	readonly field: "player";
 	readonly items: readonly EnumDesc[];
 }
+export interface ShellDesc {
+	readonly formId?: string;
+	readonly action: string;
+	readonly title: string;
+}
 
 function ItemEnumDescInit(
 	owner: PlayerDesc["id"],

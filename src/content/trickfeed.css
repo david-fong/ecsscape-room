@@ -1,0 +1,35 @@
+
+.trickfeed {
+	overflow: scroll;
+	scroll-behavior: smooth;
+	scroll-snap-type: y proximity;
+
+	height: 5em;
+	display: grid;
+	grid-template-columns: minmax(5em, max-content);
+	grid-template-rows: minmax(5em, auto);
+	grid-auto-flow: column dense;
+	justify-content: stretch;
+}
+
+/*
+The :first-child is the last visual element.
+The :last-child is the 2nd-last visual element.
+The :nth-child(2) is the 2nd visual element.
+*/
+.item {
+	overflow-anchor: none;
+}
+:first-child.item,
+:last-child.item {
+	overflow-anchor: auto;
+}
+:first-child.item {
+	grid-row: -2 / -1;
+}
+:hover:first-child.item {
+	grid-row: 2 / 3;
+}
+:hover:first-child.item ~ :last-child.item {
+	grid-row: 1 / 2;
+}

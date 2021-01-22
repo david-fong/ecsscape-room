@@ -23,11 +23,13 @@
 		// Project-specific Terms:
 		"fong",
 		"devinit",
+		"trickfeed",
 		"pikk", "xcld", // short for "exclude"
 
 		// Programming terminology:
 		// (Functions and Variables)
 		"anims",
+		"clientside",
 		"coord",
 		"decor", // short for "decorator"
 		"desc", "descs",

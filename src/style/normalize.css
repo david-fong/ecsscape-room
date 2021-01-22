@@ -7,9 +7,16 @@ body {
 	font-family: monospace;
 	color: var(--c-fg);
 	background-color: var(--c-bg);
+	scroll-behavior: smooth;
 }
 
-[contenteditable], [contenteditable="true"] {
+input[type="text"] {
+	border: none;
+	outline: none;
+	background-color: inherit;
+	color: inherit;
+}
+[contenteditable="true"] {
 	outline: none;
 }
 

@@ -5,20 +5,25 @@ const player_css = require("./player.css.json") as typeof import("./player.css")
 
 export namespace State {
 	export function Has(p: TU.Pikk<EnumDesc,"field"|"id"|"default">) {
-		// The value attribute is currently not used. Same for the Is component.
-		return <input name={p.field+"-has"} id={p.field+"-has-"+p.id} type="checkbox" value={p.id} className={state_css.this} defaultChecked={p.default}></input>;
+		return <input
+			type="checkbox" className={state_css.this} name={p.field+"-has"}
+			defaultChecked={p.default} id={p.field+"-has-"+p.id} value={p.id}
+		/>;
 	}
 	export function Is(p: TU.Pikk<EnumDesc,"field"|"id"|"default">) {
-		return <input name={p.field+"-is"} id={p.field+"-is-"+p.id} type="radio" value={p.id} className={state_css.this} defaultChecked={p.default}></input>;
+		return <input
+			type="radio" className={state_css.this} name={p.field+"-is"}
+			defaultChecked={p.default} id={p.field+"-is-"+p.id} value={p.id}
+		/>;
 	}
 
 	export function LabelHas(p: TU.Pikk<EnumDesc,"field"|"id"|"title">) {
 		CssRxn["label-has"].targets.push(p);
-		return <label htmlFor={p.field+"-has-"+p.id} className={state_css.label}>{p.title}</label>;
+		return <label className={state_css.label} htmlFor={p.field+"-has-"+p.id}>{p.title}</label>;
 	}
 	export function LabelIs(p: TU.Pikk<EnumDesc,"field"|"id"|"title">) {
 		CssRxn["label-is"].targets.push(p);
-		return <label htmlFor={p.field+"-is-"+p.id} className={state_css.label}>{p.title}</label>;
+		return <label className={state_css.label} htmlFor={p.field+"-is-"+p.id}>{p.title}</label>;
 	}
 }
 Object.freeze(State);

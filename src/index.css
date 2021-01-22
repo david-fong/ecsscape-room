@@ -4,4 +4,6 @@
 
 @import "content/editable.css";
 @import "content/state.css";
+@import "content/trickfeed.css";
+@import "content/shell.css";
 @import "content/player.css";
