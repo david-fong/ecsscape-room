@@ -2,8 +2,11 @@
 @import "normalize.vendor";
 /* #endregion */
 
+* {
+	user-select: none; /* allows overriding */
+}
+
 body {
-    user-select: none; /* <-- */
 	font-family: monospace;
 	color: var(--c-fg);
 	background-color: var(--c-bg);

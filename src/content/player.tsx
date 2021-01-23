@@ -19,12 +19,6 @@ export function Player(p: PlayerDesc) {
 			</div>
 			<div>
             	<Editable placeholder="<deleted>"/>
-				<TrickFeed children={[{},{},{},{},{},{},{},{},{}].map((min, index) => {
-					return {
-						...min,
-						id: index,
-					};
-				})}/>
 			</div>
         </div>
     </div>;

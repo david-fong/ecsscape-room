@@ -1,6 +1,7 @@
 
 # general
 .DS_Store
+/scratch.md
 
 # npm
 /node_modules/

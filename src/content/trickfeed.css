@@ -10,6 +10,7 @@
 	grid-template-rows: minmax(5em, auto);
 	grid-auto-flow: column dense;
 	justify-content: stretch;
+	align-items: stretch;
 }
 
 /*
@@ -19,17 +20,15 @@ The :nth-child(2) is the 2nd visual element.
 */
 .item {
 	overflow-anchor: none;
-}
-:first-child.item,
-:last-child.item {
-	overflow-anchor: auto;
+	display: none;
 }
 :first-child.item {
-	grid-row: -2 / -1;
+	display: initial;
 }
-:hover:first-child.item {
-	grid-row: 2 / 3;
+:hover.item {
+	overflow-anchor: auto;
+	display: initial;
 }
-:hover:first-child.item ~ :last-child.item {
-	grid-row: 1 / 2;
+:hover.item + .item {
+	display: initial;
 }

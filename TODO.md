@@ -48,36 +48,6 @@ Start working on layout and z-index.
   - An element that can only complete an animation while being hovered.
   - The path must be cleared of other overlapping elements.
 
-## Story Brainstorming
-
-### Prompt Questions
-
-- What kind of mood / atmosphere?
-  - Ex.
-    - Suspenseful
-    - Calm / relaxed
-  - This decision will affect:
-    - Color palette
-    - Background music
-- What kind of common narratives do I want to be part of this game's story?
-- .
-
-### Item Ideas
-
-- broken flashlight
-- bland crayon
-- scared hamster
-- expired milk
-- car keys
-- fred
-- ungrateful snail
-- night-vision goggles
-  - Uses css filter properties
-
-#### Various Frogs
-
-useless, unhelpful, uncooperative, upside-down, injured soccer, delusional, confused, dead, dried up, multi-purpose, rick-roll, stinky, wildcard, itchy, invisible.
-
 ## Development Notes / Practices
 
 - With JSX, for highly used elements, sort attributes by how common they are between instances. This should improve compression. But for CSS, always put the most discriminating part of the selector as far right as possible.
