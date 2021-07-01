@@ -52,5 +52,7 @@
 	"ts-node": {
 		"pretty": true,
 		"transpileOnly": true,
+		// "transpiler": "ts-node/transpilers/swc-experimental"
+		// https://typestrong.org/ts-node/docs/transpilers/#bundled-swc-integration
 	},
 }

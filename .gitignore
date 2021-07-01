@@ -5,6 +5,7 @@
 
 # npm
 /node_modules/
+.pnpm-debug.log
 
 # build
 /dist/
@@ -14,4 +15,3 @@
 *.swo
 *.orig
 Session.vim
-

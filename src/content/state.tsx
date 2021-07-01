@@ -1,4 +1,4 @@
-import type { EnumDesc } from "./defs";
+import type { EnumDesc } from "./types";
 const  state_css = require( "./state.css.json") as typeof import( "./state.css").default;
 const player_css = require("./player.css.json") as typeof import("./player.css").default;
 

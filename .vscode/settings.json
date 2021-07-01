@@ -1,5 +1,6 @@
 {
     "typescript.tsdk": "./node_modules/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true,
     "files.exclude": {
         // generic excludes:
         "node_modules/{[^.@]*,}": true,
@@ -67,14 +68,7 @@
     "[typescript]": { "editor.insertSpaces": false },
     "[css]": {        "editor.insertSpaces": false },
     "[sass]": {       "editor.insertSpaces": false },
-    "[html]": {
-        "editor.insertSpaces": false,
-        "editor.tabSize": 3,
-        "editor.wordWrap": "on",
-    },
-    "[javascriptreact]": {
-        "editor.insertSpaces": false,
-        "editor.tabSize": 3,
-        "editor.wordWrap": "on",
-    },
+    "[html]": {       "editor.insertSpaces": false, "editor.wordWrap": "on" },
+    "[javascriptreact]": { "editor.insertSpaces": false, "editor.wordWrap": "on" },
+    "[typescriptreact]": { "editor.insertSpaces": false },
 }

@@ -1,32 +1,32 @@
 
 .top_stateful-wrapper {
-    display: contents;
+	display: contents;
 }
 .top {
-    visibility: hidden; /* visible when is */
-    position: fixed;
-    top: 0; left: 0; bottom: 0; right: 0;
+	visibility: hidden; /* visible when is */
+	position: fixed;
+	top: 0; left: 0; bottom: 0; right: 0;
 
-    display: grid;
-    grid-template: "sidebar main" auto / max-content auto;
-    justify-content: stretch;
-    align-items: stretch;
+	display: grid;
+	grid-template: "sidebar main" auto / max-content auto;
+	justify-content: stretch;
+	align-items: stretch;
 
-    padding: 1ch;
-    gap: 1ch;
+	padding: 1ch;
+	gap: 1ch;
 }
 .top > :nth-child(1) {
-    grid-area: sidebar;
-    display: grid;
-    align-content: flex-start;
+	grid-area: sidebar;
+	display: grid;
+	align-content: flex-start;
 }
 .top > :nth-child(2) {
-    grid-area: main;
+	grid-area: main;
 }
 
 .picker {
-    display: grid;
-    float: right;
+	display: grid;
+	float: right;
 
-    padding: 1ch;
+	padding: 1ch;
 }
