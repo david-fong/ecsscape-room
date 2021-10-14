@@ -1,4 +1,4 @@
-import type { EnumDesc, PlayerDesc } from "content/defs";
+import type { EnumDesc, PlayerDesc } from "content/types";
 
 
 function ItemEnumDescInit(

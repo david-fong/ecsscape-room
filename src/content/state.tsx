@@ -6,21 +6,23 @@ const player_css = require("./player.css.json") as typeof import("./player.css")
 export namespace State {
 	export function Has(p: TU.Pikk<EnumDesc,"field"|"id"|"default">) {
 		return <input
-			type="checkbox" className={state_css.this} name={p.field+"-has"}
-			defaultChecked={p.default} id={p.field+"-has-"+p.id} value={p.id}
+			type="checkbox" className={state_css.this} name={p.field+"-has"+p.id}
+			defaultChecked={!!p.default} id={p.field+"-has-"+p.id} value={p.id}
 		/>;
 	}
 	export function Is(p: TU.Pikk<EnumDesc,"field"|"id"|"default">) {
 		return <input
 			type="radio" className={state_css.this} name={p.field+"-is"}
-			defaultChecked={p.default} id={p.field+"-is-"+p.id} value={p.id}
+			defaultChecked={!!p.default} id={p.field+"-is-"+p.id} value={p.id}
 		/>;
 	}
 
+	// There can be multiple labels for the same input.
 	export function LabelHas(p: TU.Pikk<EnumDesc,"field"|"id"|"title">) {
 		CssRxn["label-has"].targets.push(p);
 		return <label className={state_css.label} htmlFor={p.field+"-has-"+p.id}>{p.title}</label>;
 	}
+	// There can be multiple labels for the same input.
 	export function LabelIs(p: TU.Pikk<EnumDesc,"field"|"id"|"title">) {
 		CssRxn["label-is"].targets.push(p);
 		return <label className={state_css.label} htmlFor={p.field+"-is-"+p.id}>{p.title}</label>;
@@ -37,6 +39,7 @@ export namespace CssRxn {
 		rule: string;
 		targets: TU.Pikk<EnumDesc,"field"|"id">[],
 	}
+	// Note: This namespace can only contain type declarations.
 }
 export const CssRxn = Object.freeze({
 	"label-has": {
@@ -48,6 +51,7 @@ export const CssRxn = Object.freeze({
 		mkTarget: (p) => `[for="${p.field+"-is-"+p.id}"].${state_css.label}`,
 		rule: `{ opacity: 1.0; }`,
 	} as CssRxn.Fields,
+
 	"player-top": {
 		mkTarget: (p) => `[data-player-id="${p.id}"].${player_css.top}`,
 		rule: `{ visibility: visible; }`,
@@ -62,12 +66,14 @@ for (const key in CssRxn) {
 Object.freeze(CssRxn);
 
 /**
+ * Returns CSS that provides state bindings rules.
+ *
  * This should only be considered complete once the JSX has been
  * fully rendered to HTML.
  */
 export function CssRxnBindings(): string {
 	return Object.entries(CssRxn).map(([id, desc]) => {
-		if (desc.targets.length === 0) return "";
+		if (desc.targets.length === 0) { return ""; }
 		return desc.targets.map((p) => {
 			const id = `${p.field}-${desc.dependsOn}-${p.id}`;
 			return `:checked#${id} ~ * ${desc.mkTarget(p)}`;

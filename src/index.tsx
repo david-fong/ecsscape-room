@@ -1,4 +1,4 @@
-import { players } from "./content/types";
+import { players } from "./defs";
 import { Player } from "./content/player";
 
 export const Index = <body>
